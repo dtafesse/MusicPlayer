@@ -1,39 +1,34 @@
 import React, { Component } from "react";
-import { KeyboardAvoidingView, StyleSheet, Dimensions } from "react-native";
+import { KeyboardAvoidingView, StyleSheet, View } from "react-native";
 import {
-  Form,
-  Item,
-  Input,
-  Label,
-  Icon,
   Card,
-  CardItem,
-  Body
-} from "native-base";
+  FormLabel,
+  FormInput,
+  FormValidationMessage,
+  Button
+} from "react-native-elements";
 
 import constants from "../constants/Layout";
+import colors from "../constants/Colors";
 
 class SignUpScreen extends Component {
   render() {
     return (
       <KeyboardAvoidingView style={styles.container} behavior='padding' enabled>
-        <Card style={{ flex: 1 }}>
-          <CardItem>
-            <Body>
-              <Form>
-                <Item stackedLabel>
-                  <Label>Username</Label>
-                  <Icon active name='home' textContentType='emailAddress' />
-                  <Input />
-                </Item>
-                <Item stackedLabel last>
-                  <Label>Password</Label>
-                  <Icon active name='home' />
-                  <Input textContentType='password' secureTextEntry />
-                </Item>
-              </Form>
-            </Body>
-          </CardItem>
+        <Card style={{ flex: 1 }} title='Sign Up!'>
+          <View style={styles.formContainer}>
+            <FormLabel>Email</FormLabel>
+            <FormInput style={styles.input} />
+            <FormLabel>Password</FormLabel>
+            <FormInput textContentType='password' secureTextEntry />
+            <FormLabel>Confirm Password</FormLabel>
+            <FormInput
+              style={styles.input}
+              textContentType='password'
+              secureTextEntry
+            />
+          </View>
+          <Button raised backgroundColor={colors.primary} title='Sign Up' />
         </Card>
       </KeyboardAvoidingView>
     );
@@ -45,7 +40,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center"
-  }
+  },
+  formContainer: {
+    height: 0.4 * constants.window.height,
+    width: 0.8 * constants.window.width
+  },
+  input: { color: colors.text }
 });
 
 export default SignUpScreen;
