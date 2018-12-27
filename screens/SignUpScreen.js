@@ -5,7 +5,8 @@ import {
   FormLabel,
   FormInput,
   FormValidationMessage,
-  Button
+  Button,
+  SocialIcon
 } from "react-native-elements";
 
 import constants from "../constants/Layout";
@@ -29,6 +30,14 @@ class SignUpScreen extends Component {
             />
           </View>
           <Button raised backgroundColor={colors.primary} title='Sign Up' />
+          <View style={styles.socialContainer}>
+            <SocialIcon title='Sign In With Facebook' button type='facebook' />
+            <SocialIcon
+              title='Sign In With Google'
+              button
+              type='google-plus-official'
+            />
+          </View>
         </Card>
       </KeyboardAvoidingView>
     );
@@ -45,7 +54,10 @@ const styles = StyleSheet.create({
     height: 0.4 * constants.window.height,
     width: 0.8 * constants.window.width
   },
-  input: { color: colors.text }
+  input: { color: colors.text },
+  socialContainer: {
+    marginTop: 10
+  }
 });
 
 export default SignUpScreen;
